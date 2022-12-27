@@ -27,8 +27,20 @@ steps:
       repo: andreipoe/buildpack-rocky
       tags:
         - 8.6-aarch64
-        - latest-aarch64
       dockerfile: 8.6/Dockerfile
+      username: andreipoe
+      password:
+        from_secret: docker_token
+    depends_on: [clone]
+    when:
+      status: [success, failure]
+  - name: build-8.7
+    image: plugins/docker
+    settings:
+      repo: andreipoe/buildpack-rocky
+      tags:
+        - 8.7-aarch64
+      dockerfile: 8.7/Dockerfile
       username: andreipoe
       password:
         from_secret: docker_token
@@ -43,6 +55,32 @@ steps:
         - 8-aarch64
         - latest-aarch64
       dockerfile: 8/Dockerfile
+      username: andreipoe
+      password:
+        from_secret: docker_token
+    depends_on: [clone]
+    when:
+      status: [success, failure]
+  - name: build-9
+    image: plugins/docker
+    settings:
+      repo: andreipoe/buildpack-rocky
+      tags:
+        - 9-aarch64
+      dockerfile: 9/Dockerfile
+      username: andreipoe
+      password:
+        from_secret: docker_token
+    depends_on: [clone]
+    when:
+      status: [success, failure]
+  - name: build-9.1
+    image: plugins/docker
+    settings:
+      repo: andreipoe/buildpack-rocky
+      tags:
+        - 9.1-aarch64
+      dockerfile: 9.1/Dockerfile
       username: andreipoe
       password:
         from_secret: docker_token
@@ -86,6 +124,19 @@ steps:
     depends_on: [clone]
     when:
       status: [success, failure]
+  - name: build-8.7
+    image: plugins/docker
+    settings:
+      repo: andreipoe/buildpack-rocky
+      tags:
+        - 8.7-amd64
+      dockerfile: 8.7/Dockerfile
+      username: andreipoe
+      password:
+        from_secret: docker_token
+    depends_on: [clone]
+    when:
+      status: [success, failure]
   - name: build-8
     image: plugins/docker
     settings:
@@ -94,6 +145,32 @@ steps:
         - 8-amd64
         - latest-amd64
       dockerfile: 8/Dockerfile
+      username: andreipoe
+      password:
+        from_secret: docker_token
+    depends_on: [clone]
+    when:
+      status: [success, failure]
+  - name: build-9
+    image: plugins/docker
+    settings:
+      repo: andreipoe/buildpack-rocky
+      tags:
+        - 9-amd64
+      dockerfile: 9/Dockerfile
+      username: andreipoe
+      password:
+        from_secret: docker_token
+    depends_on: [clone]
+    when:
+      status: [success, failure]
+  - name: build-9.1
+    image: plugins/docker
+    settings:
+      repo: andreipoe/buildpack-rocky
+      tags:
+        - 9.1-amd64
+      dockerfile: 9.1/Dockerfile
       username: andreipoe
       password:
         from_secret: docker_token
@@ -123,11 +200,35 @@ steps:
       username: andreipoe
       password:
         from_secret: docker_token
+  - name: manifest-8.7
+    image: plugins/manifest
+    settings:
+      target: andreipoe/buildpack-rocky
+      spec: 8.7/manifest-spec.yml
+      username: andreipoe
+      password:
+        from_secret: docker_token
   - name: manifest-8
     image: plugins/manifest
     settings:
       target: andreipoe/buildpack-rocky
       spec: 8/manifest-spec.yml
+      username: andreipoe
+      password:
+        from_secret: docker_token
+  - name: manifest-9
+    image: plugins/manifest
+    settings:
+      target: andreipoe/buildpack-rocky
+      spec: 9/manifest-spec.yml
+      username: andreipoe
+      password:
+        from_secret: docker_token
+  - name: manifest-9.1
+    image: plugins/manifest
+    settings:
+      target: andreipoe/buildpack-rocky
+      spec: 9.1/manifest-spec.yml
       username: andreipoe
       password:
         from_secret: docker_token
@@ -154,6 +255,6 @@ trigger:
 
 ---
 kind: signature
-hmac: d6b204c475e67787c7aaf8632bfb18f1ef0d27b822bb1ceb15bd18dd99b2906b
+hmac: ce0b2a86bc440040ae22d7a2ee7055886d2d4ffb39c17d08329189e082b3b6fa
 
 ...
