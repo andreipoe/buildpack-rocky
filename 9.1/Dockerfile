@@ -1,8 +1,8 @@
 FROM rockylinux:9.1
 LABEL maintainer "Andrei Poenaru <docker@simd.stream>"
 
-RUN yum install -y epel-release && \
-    yum install -y \
+RUN dnf install -y epel-release && \
+    dnf install -y --allowerasing \
         autoconf \
         automake \
         byacc \
@@ -32,4 +32,4 @@ RUN yum install -y epel-release && \
         wget \
         which \
         zlib-devel && \
-    yum clean all
+    dnf clean all
