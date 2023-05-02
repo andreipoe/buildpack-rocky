@@ -187,7 +187,6 @@ steps:
   - name: manifest-8.5
     image: plugins/manifest
     settings:
-      target: andreipoe/buildpack-rocky
       spec: 8.5/manifest-spec.yml
       username: andreipoe
       password:
@@ -195,7 +194,6 @@ steps:
   - name: manifest-8.6
     image: plugins/manifest
     settings:
-      target: andreipoe/buildpack-rocky
       spec: 8.6/manifest-spec.yml
       username: andreipoe
       password:
@@ -203,7 +201,6 @@ steps:
   - name: manifest-8.7
     image: plugins/manifest
     settings:
-      target: andreipoe/buildpack-rocky
       spec: 8.7/manifest-spec.yml
       username: andreipoe
       password:
@@ -211,7 +208,6 @@ steps:
   - name: manifest-8
     image: plugins/manifest
     settings:
-      target: andreipoe/buildpack-rocky
       spec: 8/manifest-spec.yml
       username: andreipoe
       password:
@@ -219,7 +215,6 @@ steps:
   - name: manifest-9
     image: plugins/manifest
     settings:
-      target: andreipoe/buildpack-rocky
       spec: 9/manifest-spec.yml
       username: andreipoe
       password:
@@ -227,7 +222,6 @@ steps:
   - name: manifest-9.1
     image: plugins/manifest
     settings:
-      target: andreipoe/buildpack-rocky
       spec: 9.1/manifest-spec.yml
       username: andreipoe
       password:
@@ -255,6 +249,6 @@ trigger:
 
 ---
 kind: signature
-hmac: ce0b2a86bc440040ae22d7a2ee7055886d2d4ffb39c17d08329189e082b3b6fa
+hmac: 60919757b33a6ead65a5a750fca46640b849c5ea467693b3eef32cc5d762a0b1
 
 ...
