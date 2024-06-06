@@ -31,5 +31,6 @@ RUN dnf install -y epel-release && \
         stow \
         wget \
         which \
+        xz \
         zlib-devel && \
     dnf clean all
