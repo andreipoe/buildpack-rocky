@@ -53,7 +53,6 @@ steps:
       repo: andreipoe/buildpack-rocky
       tags:
         - 8-aarch64
-        - latest-aarch64
       dockerfile: 8/Dockerfile
       username: andreipoe
       password:
@@ -67,6 +66,7 @@ steps:
       repo: andreipoe/buildpack-rocky
       tags:
         - 9-aarch64
+        - latest-aarch64
       dockerfile: 9/Dockerfile
       username: andreipoe
       password:
@@ -81,6 +81,32 @@ steps:
       tags:
         - 9.1-aarch64
       dockerfile: 9.1/Dockerfile
+      username: andreipoe
+      password:
+        from_secret: docker_token
+    depends_on: [clone]
+    when:
+      status: [success, failure]
+  - name: build-9.2
+    image: plugins/docker
+    settings:
+      repo: andreipoe/buildpack-rocky
+      tags:
+        - 9.2-aarch64
+      dockerfile: 9.2/Dockerfile
+      username: andreipoe
+      password:
+        from_secret: docker_token
+    depends_on: [clone]
+    when:
+      status: [success, failure]
+  - name: build-9.3
+    image: plugins/docker
+    settings:
+      repo: andreipoe/buildpack-rocky
+      tags:
+        - 9.3-aarch64
+      dockerfile: 9.3/Dockerfile
       username: andreipoe
       password:
         from_secret: docker_token
@@ -143,7 +169,6 @@ steps:
       repo: andreipoe/buildpack-rocky
       tags:
         - 8-amd64
-        - latest-amd64
       dockerfile: 8/Dockerfile
       username: andreipoe
       password:
@@ -157,6 +182,7 @@ steps:
       repo: andreipoe/buildpack-rocky
       tags:
         - 9-amd64
+        - latest-amd64
       dockerfile: 9/Dockerfile
       username: andreipoe
       password:
@@ -171,6 +197,32 @@ steps:
       tags:
         - 9.1-amd64
       dockerfile: 9.1/Dockerfile
+      username: andreipoe
+      password:
+        from_secret: docker_token
+    depends_on: [clone]
+    when:
+      status: [success, failure]
+  - name: build-9.2
+    image: plugins/docker
+    settings:
+      repo: andreipoe/buildpack-rocky
+      tags:
+        - 9.2-amd64
+      dockerfile: 9.2/Dockerfile
+      username: andreipoe
+      password:
+        from_secret: docker_token
+    depends_on: [clone]
+    when:
+      status: [success, failure]
+  - name: build-9.3
+    image: plugins/docker
+    settings:
+      repo: andreipoe/buildpack-rocky
+      tags:
+        - 9.3-amd64
+      dockerfile: 9.3/Dockerfile
       username: andreipoe
       password:
         from_secret: docker_token
@@ -249,6 +301,6 @@ trigger:
 
 ---
 kind: signature
-hmac: 60919757b33a6ead65a5a750fca46640b849c5ea467693b3eef32cc5d762a0b1
+hmac: 81be0ec6f9fb859a9bc50e24874653ef0b1cb9604d7138579e5636aa1074a2f9
 
 ...

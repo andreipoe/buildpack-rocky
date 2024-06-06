@@ -1,4 +1,5 @@
 image: andreipoe/buildpack-rocky:9
+tags: [latest]
 
 manifests:
   - image: andreipoe/buildpack-rocky:9-aarch64
