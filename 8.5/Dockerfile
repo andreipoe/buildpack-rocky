@@ -32,5 +32,6 @@ RUN yum install -y epel-release && \
         stow \
         wget \
         which \
+        xz \
         zlib-devel && \
     yum clean all
