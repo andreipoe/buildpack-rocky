@@ -47,6 +47,32 @@ steps:
     depends_on: [clone]
     when:
       status: [success, failure]
+  - name: build-8.8
+    image: plugins/docker
+    settings:
+      repo: andreipoe/buildpack-rocky
+      tags:
+        - 8.8-aarch64
+      dockerfile: 8.8/Dockerfile
+      username: andreipoe
+      password:
+        from_secret: docker_token
+    depends_on: [clone]
+    when:
+      status: [success, failure]
+  - name: build-8.9
+    image: plugins/docker
+    settings:
+      repo: andreipoe/buildpack-rocky
+      tags:
+        - 8.9-aarch64
+      dockerfile: 8.9/Dockerfile
+      username: andreipoe
+      password:
+        from_secret: docker_token
+    depends_on: [clone]
+    when:
+      status: [success, failure]
   - name: build-8
     image: plugins/docker
     settings:
@@ -163,6 +189,32 @@ steps:
     depends_on: [clone]
     when:
       status: [success, failure]
+  - name: build-8.8
+    image: plugins/docker
+    settings:
+      repo: andreipoe/buildpack-rocky
+      tags:
+        - 8.8-amd64
+      dockerfile: 8.8/Dockerfile
+      username: andreipoe
+      password:
+        from_secret: docker_token
+    depends_on: [clone]
+    when:
+      status: [success, failure]
+  - name: build-8.9
+    image: plugins/docker
+    settings:
+      repo: andreipoe/buildpack-rocky
+      tags:
+        - 8.9-amd64
+      dockerfile: 8.9/Dockerfile
+      username: andreipoe
+      password:
+        from_secret: docker_token
+    depends_on: [clone]
+    when:
+      status: [success, failure]
   - name: build-8
     image: plugins/docker
     settings:
@@ -257,6 +309,20 @@ steps:
       username: andreipoe
       password:
         from_secret: docker_token
+  - name: manifest-8.8
+    image: plugins/manifest
+    settings:
+      spec: 8.8/manifest-spec.yml
+      username: andreipoe
+      password:
+        from_secret: docker_token
+  - name: manifest-8.9
+    image: plugins/manifest
+    settings:
+      spec: 8.9/manifest-spec.yml
+      username: andreipoe
+      password:
+        from_secret: docker_token
   - name: manifest-8
     image: plugins/manifest
     settings:
@@ -301,6 +367,6 @@ trigger:
 
 ---
 kind: signature
-hmac: 81be0ec6f9fb859a9bc50e24874653ef0b1cb9604d7138579e5636aa1074a2f9
+hmac: f8cbe88616192a034ce4944403921366384ff4b7a8a297c421c2b32d2d888ad7
 
 ...
