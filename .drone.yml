@@ -35,6 +35,32 @@ steps:
     depends_on: [clone]
     when:
       status: [success, failure]
+  - name: build-9.4
+    image: plugins/docker
+    settings:
+      repo: andreipoe/buildpack-rocky
+      tags:
+        - 9.4-aarch64
+      dockerfile: 9.4/Dockerfile
+      username: andreipoe
+      password:
+        from_secret: docker_token
+    depends_on: [clone]
+    when:
+      status: [success, failure]
+  - name: build-9.5
+    image: plugins/docker
+    settings:
+      repo: andreipoe/buildpack-rocky
+      tags:
+        - 9.5-aarch64
+      dockerfile: 9.5/Dockerfile
+      username: andreipoe
+      password:
+        from_secret: docker_token
+    depends_on: [clone]
+    when:
+      status: [success, failure]
 
 ---
 kind: pipeline
@@ -73,6 +99,32 @@ steps:
     depends_on: [clone]
     when:
       status: [success, failure]
+  - name: build-9.4
+    image: plugins/docker
+    settings:
+      repo: andreipoe/buildpack-rocky
+      tags:
+        - 9.4-amd64
+      dockerfile: 9.4/Dockerfile
+      username: andreipoe
+      password:
+        from_secret: docker_token
+    depends_on: [clone]
+    when:
+      status: [success, failure]
+  - name: build-9.5
+    image: plugins/docker
+    settings:
+      repo: andreipoe/buildpack-rocky
+      tags:
+        - 9.5-amd64
+      dockerfile: 9.5/Dockerfile
+      username: andreipoe
+      password:
+        from_secret: docker_token
+    depends_on: [clone]
+    when:
+      status: [success, failure]
 
 ---
 kind: pipeline
@@ -91,6 +143,20 @@ steps:
     image: plugins/manifest
     settings:
       spec: 9.3/manifest-spec.yml
+      username: andreipoe
+      password:
+        from_secret: docker_token
+  - name: manifest-9.4
+    image: plugins/manifest
+    settings:
+      spec: 9.4/manifest-spec.yml
+      username: andreipoe
+      password:
+        from_secret: docker_token
+  - name: manifest-9.5
+    image: plugins/manifest
+    settings:
+      spec: 9.5/manifest-spec.yml
       username: andreipoe
       password:
         from_secret: docker_token
@@ -117,6 +183,6 @@ trigger:
 
 ---
 kind: signature
-hmac: 22b2b9f74b6a089c8f0518f5b3c5e6992f8cf5e9b1b1015364fb9feea940cbca
+hmac: 27f7bc441c69f0c428c1774cd1cbc8cdd1a5d56898b50dda668ae57e490c5910
 
 ...

@@ -18,3 +18,5 @@ The following Rocky Linux versions are supported:
 * [`9.1`](https://github.com/andreipoe/buildpack-rocky/blob/master/9.1/Dockerfile)
 * [`9.2`](https://github.com/andreipoe/buildpack-rocky/blob/master/9.2/Dockerfile)
 * [`9.3`](https://github.com/andreipoe/buildpack-rocky/blob/master/9.3/Dockerfile)
+* [`9.4`](https://github.com/andreipoe/buildpack-rocky/blob/master/9.4/Dockerfile)
+* [`9.5`](https://github.com/andreipoe/buildpack-rocky/blob/master/9.5/Dockerfile)

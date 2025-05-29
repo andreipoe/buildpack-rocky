@@ -1,4 +1,4 @@
-FROM rockylinux/rockylinux:9
+FROM rockylinux/rockylinux:9.4
 LABEL maintainer "Andrei Poenaru <docker@simd.stream>"
 
 RUN dnf install -y epel-release && \
