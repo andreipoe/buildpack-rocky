@@ -61,6 +61,19 @@ steps:
     depends_on: [clone]
     when:
       status: [success, failure]
+  - name: build-9.6
+    image: plugins/docker
+    settings:
+      repo: andreipoe/buildpack-rocky
+      tags:
+        - 9.6-aarch64
+      dockerfile: 9.6/Dockerfile
+      username: andreipoe
+      password:
+        from_secret: docker_token
+    depends_on: [clone]
+    when:
+      status: [success, failure]
 
 ---
 kind: pipeline
@@ -125,6 +138,19 @@ steps:
     depends_on: [clone]
     when:
       status: [success, failure]
+  - name: build-9.6
+    image: plugins/docker
+    settings:
+      repo: andreipoe/buildpack-rocky
+      tags:
+        - 9.6-amd64
+      dockerfile: 9.6/Dockerfile
+      username: andreipoe
+      password:
+        from_secret: docker_token
+    depends_on: [clone]
+    when:
+      status: [success, failure]
 
 ---
 kind: pipeline
@@ -160,6 +186,13 @@ steps:
       username: andreipoe
       password:
         from_secret: docker_token
+  - name: manifest-9.6
+    image: plugins/manifest
+    settings:
+      spec: 9.6/manifest-spec.yml
+      username: andreipoe
+      password:
+        from_secret: docker_token
   - name: healthcheck
     image: ubuntu
     environment:
@@ -183,6 +216,6 @@ trigger:
 
 ---
 kind: signature
-hmac: 27f7bc441c69f0c428c1774cd1cbc8cdd1a5d56898b50dda668ae57e490c5910
+hmac: 8f51b8a3d6ab90ba6c99858d32160bbc35c11e0c09b9a9967b3614cbf7791ce3
 
 ...
